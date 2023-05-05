@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/home_navigation"
+    app:startDestination="@id/homeFragment">
+
+
+    <fragment
+        android:id="@+id/homeFragment"
+        android:name="com.example.funnymemesapp.modules.home.fragments.HomeFragment"
+        android:label="fragment_home"
+        tools:layout="@layout/fragment_home" >
+        <action
+            android:id="@+id/action_homeFragment_to_memesFragment"
+            app:destination="@id/memesFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_favoriteMemesFragment"
+            app:destination="@id/favoriteMemesFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/favoriteMemesFragment"
+        android:name="com.example.funnymemesapp.modules.home.fragments.FavoriteMemesFragment"
+        android:label="fragment_favorite_memes"
+        tools:layout="@layout/fragment_favorite_memes" >
+        <action
+            android:id="@+id/action_favoriteMemesFragment_to_memesFragment"
+            app:destination="@id/memesFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/memesFragment"
+        android:name="com.example.funnymemesapp.modules.home.fragments.MemesFragment"
+        android:label="fragment_memes"
+        tools:layout="@layout/fragment_memes" >
+    </fragment>
+</navigation>
