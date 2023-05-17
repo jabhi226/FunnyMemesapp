@@ -14,18 +14,6 @@
         <action
             android:id="@+id/action_homeFragment_to_memesFragment"
             app:destination="@id/memesFragment" />
-        <action
-            android:id="@+id/action_homeFragment_to_favoriteMemesFragment"
-            app:destination="@id/favoriteMemesFragment" />
-    </fragment>
-    <fragment
-        android:id="@+id/favoriteMemesFragment"
-        android:name="com.example.funnymemesapp.modules.home.fragments.FavoriteMemesFragment"
-        android:label="fragment_favorite_memes"
-        tools:layout="@layout/fragment_favorite_memes" >
-        <action
-            android:id="@+id/action_favoriteMemesFragment_to_memesFragment"
-            app:destination="@id/memesFragment" />
     </fragment>
     <fragment
         android:id="@+id/memesFragment"

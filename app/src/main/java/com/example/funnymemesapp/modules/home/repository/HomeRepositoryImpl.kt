@@ -5,6 +5,7 @@ import com.example.funnymemesapp.db.memedb.daos.MemesDao
 import com.example.funnymemesapp.modules.core.models.CommonResponse
 import com.example.funnymemesapp.modules.home.helper.HomeResponseConverter
 import com.example.funnymemesapp.modules.home.models.network.Memes
+import com.example.funnymemesapp.modules.home.models.ui.MemeModels
 import com.example.funnymemesapp.network.NetworkApiService
 
 class HomeRepositoryImpl(
@@ -13,11 +14,11 @@ class HomeRepositoryImpl(
     private val homeResponseConverter: HomeResponseConverter
 ) : HomeRepository {
 
-    override suspend fun getMeme(): CommonResponse<ArrayList<Memes>> {
+    override suspend fun getMeme(): CommonResponse<ArrayList<MemeModels>> {
         return homeResponseConverter.getMemeResponse(networkApiService.getMeme())
     }
 
-    override suspend fun getStoredMeme(): CommonResponse<ArrayList<Memes>> {
+    override suspend fun getStoredMeme(): CommonResponse<ArrayList<MemeModels>> {
         return homeResponseConverter.getStoredMemeResponse(memesDb.memesDao.getAllSavedMemes())
     }
 

@@ -4,9 +4,11 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.paging.PagingData
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.PagerSnapHelper
 import com.example.funnymemesapp.R
@@ -14,11 +16,11 @@ import com.example.funnymemesapp.databinding.FragmentMemesBinding
 import com.example.funnymemesapp.modules.home.adapters.MemesAdapter
 import com.example.funnymemesapp.modules.home.helper.SpacePagerSnapHelper
 import com.example.funnymemesapp.modules.home.viewmodel.HomeViewModel
-import com.google.android.material.snackbar.Snackbar
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.collectLatest
+import kotlinx.coroutines.flow.flowOf
 import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
@@ -47,8 +49,7 @@ class MemesFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         initRecyclerView()
         observeData()
-        println("--------->>>>>>>> ${arguments?.getString("page_type")}")
-        if (arguments?.getString("page_type") == "NEW_MEME"){
+        if (arguments?.getString("page_type") == "NEW_MEME") {
             viewModel.getDataFromApi(true)
         } else {
             viewModel.getDataFromApi(false)
@@ -65,11 +66,14 @@ class MemesFragment : Fragment() {
                     is HomeViewModel.HomeUiEvents.OnCommonError -> {
 
                     }
+
                     is HomeViewModel.HomeUiEvents.OnGetMedicineSuccess -> {
 
                     }
+
                     is HomeViewModel.HomeUiEvents.OnMemeSaved -> {
-                        Snackbar.make(binding.root, it.res.toString(), Snackbar.LENGTH_SHORT).show()
+                        Toast.makeText(requireContext(), it.res.toString(), Toast.LENGTH_SHORT)
+                            .show()
                     }
                 }
             }
@@ -80,7 +84,7 @@ class MemesFragment : Fragment() {
         adapter = MemesAdapter({
             activity?.startActivity(it)
         }) {
-            viewModel.saveMeme(it)
+            viewModel.saveMeme(it, this@MemesFragment.adapter.snapshot().items)
         }
         binding.recyclerView.apply {
             this.layoutManager =
