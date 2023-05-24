@@ -4,7 +4,7 @@ import androidx.room.Database
 import androidx.room.RoomDatabase
 import androidx.room.TypeConverters
 import com.example.funnymemesapp.db.memedb.daos.MemesDao
-import com.example.funnymemesapp.modules.home.models.network.Memes
+import com.example.funnymemesapp.db.memedb.entity.Memes
 
 @Database(entities = [Memes::class], version = 1, exportSchema = true)
 @TypeConverters(MemeDbTypeConverter::class)

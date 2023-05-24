@@ -6,7 +6,7 @@ import androidx.paging.PagingConfig
 import androidx.paging.PagingData
 import com.example.funnymemesapp.modules.core.models.CommonResponse
 import com.example.funnymemesapp.modules.home.adapters.MemesPagingSource
-import com.example.funnymemesapp.modules.home.models.network.Memes
+import com.example.funnymemesapp.db.memedb.entity.Memes
 import com.example.funnymemesapp.modules.home.models.ui.MemeModels
 import com.example.funnymemesapp.modules.home.repository.HomeRepository
 import dagger.hilt.android.lifecycle.HiltViewModel

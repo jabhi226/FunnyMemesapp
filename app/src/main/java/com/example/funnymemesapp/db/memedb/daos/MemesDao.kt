@@ -4,7 +4,7 @@ import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
-import com.example.funnymemesapp.modules.home.models.network.Memes
+import com.example.funnymemesapp.db.memedb.entity.Memes
 
 @Dao
 interface MemesDao {

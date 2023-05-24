@@ -1,4 +1,4 @@
-package com.example.funnymemesapp.modules.home.models.network
+package com.example.funnymemesapp.db.memedb.entity
 
 import androidx.room.ColumnInfo
 import androidx.room.Entity

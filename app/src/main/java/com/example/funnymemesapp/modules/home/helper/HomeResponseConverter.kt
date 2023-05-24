@@ -2,7 +2,7 @@ package com.example.funnymemesapp.modules.home.helper
 
 import com.example.funnymemesapp.modules.core.models.CommonResponse
 import com.example.funnymemesapp.modules.home.models.network.MemeResponse
-import com.example.funnymemesapp.modules.home.models.network.Memes
+import com.example.funnymemesapp.db.memedb.entity.Memes
 import com.example.funnymemesapp.modules.home.models.ui.MemeModels
 import com.example.funnymemesapp.network.NetworkResponse
 

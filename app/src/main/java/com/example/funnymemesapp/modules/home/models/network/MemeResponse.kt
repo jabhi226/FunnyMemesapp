@@ -1,5 +1,6 @@
 package com.example.funnymemesapp.modules.home.models.network
 
+import com.example.funnymemesapp.db.memedb.entity.Memes
 import com.google.gson.annotations.SerializedName
 
 data class MemeResponse(

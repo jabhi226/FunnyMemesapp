@@ -3,7 +3,6 @@ package com.example.funnymemesapp.modules.home.adapters
 import androidx.paging.PagingSource
 import androidx.paging.PagingState
 import com.example.funnymemesapp.modules.core.models.CommonResponse
-import com.example.funnymemesapp.modules.home.models.network.Memes
 import com.example.funnymemesapp.modules.home.models.ui.MemeModels
 import com.example.funnymemesapp.modules.home.repository.HomeRepository
 import java.lang.Exception
