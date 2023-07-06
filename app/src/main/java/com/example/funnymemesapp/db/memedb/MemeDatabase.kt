@@ -3,10 +3,12 @@ package com.example.funnymemesapp.db.memedb
 import androidx.room.Database
 import androidx.room.RoomDatabase
 import androidx.room.TypeConverters
+import com.example.funnymemesapp.db.memedb.daos.ImageSaverDao
 import com.example.funnymemesapp.db.memedb.daos.MemesDao
+import com.example.funnymemesapp.db.memedb.entity.ImageSaver
 import com.example.funnymemesapp.db.memedb.entity.Memes
 
-@Database(entities = [Memes::class], version = 1, exportSchema = true)
+@Database(entities = [Memes::class, ImageSaver::class], version = 1, exportSchema = true)
 @TypeConverters(MemeDbTypeConverter::class)
 abstract class MemeDatabase: RoomDatabase() {
     companion object {
@@ -14,5 +16,7 @@ abstract class MemeDatabase: RoomDatabase() {
     }
 
     abstract val memesDao: MemesDao
+
+    abstract val imageSaverDao: ImageSaverDao
 
 }

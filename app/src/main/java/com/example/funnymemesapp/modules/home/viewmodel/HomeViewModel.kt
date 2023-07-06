@@ -1,9 +1,11 @@
 package com.example.funnymemesapp.modules.home.viewmodel
 
+import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.paging.Pager
 import androidx.paging.PagingConfig
 import androidx.paging.PagingData
+import com.example.funnymemesapp.db.memedb.entity.ImageSaver
 import com.example.funnymemesapp.modules.core.models.CommonResponse
 import com.example.funnymemesapp.modules.home.adapters.MemesPagingSource
 import com.example.funnymemesapp.db.memedb.entity.Memes
@@ -31,6 +33,13 @@ class HomeViewModel @Inject constructor(
 
     var currentMemeList: Flow<PagingData<MemeModels>>? = null
 
+    val image = MutableLiveData<ImageSaver?>()
+    init {
+        CoroutineScope(Dispatchers.IO).launch {
+            image.postValue(generalRepository.getStoredImage())
+        }
+    }
+
     fun getDataFromApi(isNew: Boolean) {
         val psf = MemesPagingSource(generalRepository, isNew)
         currentMemeList = Pager(
@@ -52,6 +61,12 @@ class HomeViewModel @Inject constructor(
         data class OnGetMedicineSuccess(val data: Flow<PagingData<Memes>>?) : HomeUiEvents()
         data class OnCommonError(val error: String) : HomeUiEvents()
         data class OnMemeSaved(val res: CommonResponse<String>) : HomeUiEvents()
+    }
+
+    fun saveImage(bitmap: ImageSaver){
+        CoroutineScope(Dispatchers.IO).launch {
+            generalRepository.saveImage(bitmap)
+        }
     }
 
 }
