@@ -1,6 +1,9 @@
 package com.example.funnymemesapp.modules.home.repository
 
+import android.graphics.Bitmap
 import com.example.funnymemesapp.db.memedb.MemeDatabase
+import com.example.funnymemesapp.db.memedb.MemeDbTypeConverter
+import com.example.funnymemesapp.db.memedb.entity.ImageSaver
 import com.example.funnymemesapp.modules.core.models.CommonResponse
 import com.example.funnymemesapp.modules.home.helper.HomeResponseConverter
 import com.example.funnymemesapp.db.memedb.entity.Memes
@@ -23,5 +26,13 @@ class HomeRepositoryImpl(
 
     override suspend fun saveMeme(memes: Memes): CommonResponse<String> {
         return homeResponseConverter.saveMemeResponse(memesDb.memesDao.insertMeme(memes))
+    }
+
+    override suspend fun saveImage(imageSaver: ImageSaver) {
+        memesDb.imageSaverDao.insertImage(imageSaver)
+    }
+
+    override suspend fun getStoredImage(): ImageSaver? {
+        return memesDb.imageSaverDao.getSavedImage()
     }
 }
